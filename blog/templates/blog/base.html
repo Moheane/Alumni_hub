@@ -1,0 +1,219 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="C:/Users/Lenovo-User/Downloads/bootstrap-5.0.0-beta2-dist/bootstrap-5.0.0-beta2-dist/css/bootsrtrap.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+
+<body style="background-color: rgb(230, 226, 223);">
+   <header>
+    <div class="site-header container-fluid">
+      <nav  class="navbar navbar-expand-sm  color-dark fixed-top" style="background-color:orange; border-bottom: 2px inset black;">
+        {% if user.is_authenticated %}
+        <div style="padding: 1rem; width:9%;">
+          <a href="https://mindworx.co.za/" target="_blank">
+            <img class=" image-responsive float-left" src="" alt="Logo">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          
+          <ul class="navbar-nav mr-auto" style="font-weight: bold; font-size: small;">
+            <li class="nav-item active">
+              <a style="color: black;" class="nav-link" href="{% url 'HomePage' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'JobPage' %}">JOBS</a>
+            </li>
+            <li class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'AboutPage' %}">SEMINARS</a>
+            </li>
+            <li class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'user-profile' %}">ACCOUNT</a>
+            </li>
+          </li>
+          <li class="nav-item">
+            <a style="color: black;" class="nav-link" href="{% url 'JobPage' %}">MESSAGES</a>
+          </li>
+          </li>
+          <li class="nav-item">
+            <a style="color: black;" class="nav-link" href="{% url 'JobPage' %}">LATEST-NEWS</a>
+          </li>
+            <li class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'AboutPage' %}">ABOUT</a>
+            
+            <li  class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'contactsPage' %}">CONTACTS</a>
+            </li>
+            
+          </ul>
+        </div>
+        <div class="navbar-nav" style="font-weight: normal; font-size: small;">
+          <a href="{% url 'user-logout' %}" class="nav-item nav-link text-dark">LOGOUT</a>
+        </div>
+        {% else %}
+        <div style="padding: 1rem; width:9%;">
+          <a href="https://mindworx.co.za/" target="_blank">
+            <img class="image-fluid image-responsive float-left" src="/Backend/aa.jpeg">
+          </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          
+          <ul class="navbar-nav mr-auto navbar-expand-sm" style="font-weight: bold; font-size: small;">
+            <li class="nav-item active">
+              <a style="color: black;" class="nav-link" href="{% url 'HomePage' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'JobPage' %}">LATEST-NEWS</a>
+            </li>
+            
+            <li class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'AboutPage' %}">ABOUT</a>
+            </li>
+            <li  class="nav-item">
+              <a style="color: black;" class="nav-link" href="{% url 'contactsPage' %}">CONTACTS</a>
+            </li>
+            
+          </ul>
+        </div>
+        <div class="navbar-nav" style="font-weight: normal; font-size: small;">
+          <a href="{% url 'user-login' %}" class="nav-item nav-link text-dark">LOGIN</a>
+          <a href="{% url 'user-register' %}" class="nav-item nav-link text-dark">REGISTER</a>
+        </div>
+        {% endif %}
+
+        
+    </nav>
+    </div>
+   </header>
+   <div class="container">
+     <div style="min-height:5rem;">
+
+     </div>
+     <div class="text-center bg-dark container text-warning m-1 pb-3" style="border: 1px solid orange;">
+      {% if user.is_authenticated %} 
+      <p">
+        Hello <span>{{user.username}}!</span>  <br> Welcome to Mindworx Alumni!
+       </p>
+        
+        {% else %}
+        <p>
+          WELCOME TO MINDWORX ALUMNI!
+        </p>
+      {% endif %}
+     </div>
+     <br>
+     <div class="row bg-white my-9">
+       <div class="col-md-8 p-2">
+        <main class="container p-3 m4" style="background-color: orange; border:0.5rem groove rgb(68, 67, 67)">
+         
+          {% block content %}
+             {% endblock %}
+        </main>
+       </div>
+       <div class="col-md-4 p-5 bg-dark text-dark p-2" style="border: 1rem inset orange;">
+        
+       </div>
+     </div>
+   </div>
+<footer class="bg-dark content-center mt-2" style="border-top: 2px solid orange; color: orange" >
+  <div class="container-fluid text-center m-4 p-5" style="border-bottom: 10px white solid;">
+    <div class="row text-center text-warning" >
+      <div class="col-md-3 m-0.4 p-2  ">
+        <h4><a class="text-white" style="text-decoration: none;" href="">SERVICES</a></h4>
+        <div>
+          <li ><a target="_blank" class="text-warning" class="text-warning" href="https://mindworx.co.za/consulting/" style="text-decoration: none;">CONSULTING</a></li>
+        </div>
+        <div>
+          <li><a target="_blank" class="text-warning" href="https://mindworx.co.za/academy/" style="text-decoration: none;">ACADEMY</a></li>
+        </div>
+        <div>
+          <li><a target="_blank" class="text-warning" class="mx-auto" href="https://mindworx.co.za/resourcing/" style="text-decoration: none;">RESOURCING</a></li>
+        </div>
+        <div>
+          <li><a target="_blank" class="text-warning" class="mx-auto" href="https://mindworx.co.za/empowerment-advisory-page/" style="text-decoration: none;">EMPOWERMENT ADVISORY</a></li>
+        </div>
+      </div>
+      <div class="col-md-3 text-warning m-0.4 p-2 ">
+        <h4 class="text-white">ABOUT US</h4>
+        <div>
+          <p style="font-style: italic;">
+            “The beating heart of every enterprise is its people and that is where you will find Mindworx.”
+          </p>
+        </div>
+      </div>
+      <div class="col-md-3 m-0.4 p-4" >
+        <h4 class="text-white">CONTACT DETAILS</h4>
+        <div>
+          Tel: +27 11 484 4747/8
+          <br>
+Email: info@mindworx.co.za
+<br>
+The Mall Offices
+8th Floor
+11 Cradock Ave
+Rosebank, Johannesburg
+PO Box 3112, Parklands 2121
+        </div>
+
+      </div>
+      <div class="col-md-3  ">
+        
+        <h4><a class="text-white m-0.4 p-2" style="text-decoration: none;" href="">NAVIGATE</a></h4>
+        <div>
+          <li ><a class="text-warning" href="" style="text-decoration: none;">HOME</a></li>
+        </div>
+        <div>
+          <li><a class="text-warning" href="" style="text-decoration: none;">JOBS</a></li>
+        </div>
+        <div>
+          <li><a class="text-warning" href="" style="text-decoration: none;">ABOUT US</a></li>
+        </div>
+        <div>
+          <li><a class="text-warning" href="" style="text-decoration: none;">SERVICES</a></li>
+        </div>
+        <div>
+          <li><a class="text-warning" href="" style="text-decoration: none;">SEMINARS</a></li>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <br style="background-color: orange; border:aliceblue;">
+    <div class="text-center pb-5">
+      <p>
+        All rights reserved 2020-2020
+      </p>
+      <p>Designed and developed by <span><a style="text-decoration: none;" href="">Team101</a></span></p>
+    
+    </div>
+
+</footer>
+
+
+   <!-- JavaScript Bundle with Popper -->
+<script src="{% static 'scripts/jquery-3.6.0.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="C:/Users/Lenovo-User/Downloads/bootstrap-5.0.0-beta2-dist/bootstrap-5.0.0-beta2-dist/js/bootstrap.js"></script>
+
+<style>
+
+   [class*="art"]{
+ background-color:rgb(3, 3, 3);
+   }
+
+</style>
+</body>
+</html>

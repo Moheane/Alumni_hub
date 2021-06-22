@@ -1,0 +1,60 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div>
+    <section class="bg-dark p-3 m-2" style="border-radius: 1rem; border: 3px groove orange;">
+      <div>
+        <input placeholder="Whats on your mind?" style="width:90%; padding:1rem; height:6rem; border-radius:2rem orange; " type="text" name="postInput" id="postId">
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-success btn-sm m-1 p-1" style= "background-color:orange; vertical-align: middle; min-width: 4rem; border:1px outset orange">Post</button>
+      </div>
+    </section>
+    <br >
+  </div>
+    {% for post in posts %}
+        <article class="container media bg-dark content-section p-2 m-1" style="border-radius: 0.5rem;">
+            <div class="media-body bg-dark m-0.5 p-3" style="border-radius: 1rem; border:0.5rem inset orange">
+                <div class="container article-metadata m-2 p-1 bg-white text-inline">
+                    <div class="container">
+                      <img class="image-responsive" src="" alt="image">
+                      <a class="mr-2" href="">{{user.username}}</a>
+                    </div>
+                    
+                </div>
+                <div style="flex-direction: column; float: right; position: relative; width: fit-content;" class="m-2 m-1">
+                  <small class="text-muted p-1 text-dark" style=" background-color:orange; border-top-right-radius: 0.6rem;">
+                    {{post.date_posted|date:"F d , H:i"}}
+                </small>
+                </div>
+
+                <div style=" border-radius: 1rem; border:1px inset orange; background-color:rgb(112, 109, 107); color:white; font-family:'Courier New', Courier, monospace;" class=" article-content p-3 m-1">
+                    {{post.Content}}
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
+
+
+{% block side %}
+{% for job in jobs %}
+<article class="media content-section p-2 m-1 bg-dark">
+    <div class="container media-body bg-light m-0.5 p-3">
+        <div class="article-metadata m-2 p-1 bg-light text-inline">
+            <p class="mr-2" href="">{{job.Tittle}}</p>
+            <p style="float: right;">
+                Due date: <span>{{job.date_posted}}</span>
+            </p>
+        </div>
+        <br>
+         <div>
+                
+        <p style="font-family:'Courier New', Courier, monospace;" class=" article-content p-3 m-1 text-warning">
+            {{job.Description}}
+        </p>
+         </div>
+    </div>
+</article>
+{% endfor %}
+{% endblock side %}

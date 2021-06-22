@@ -1,0 +1,81 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="container md bg-dark mb-3 p-2" style="color: aliceblue;">
+    
+    <div class="container bg-success p-5">
+        <h6>FILTER JOB  BY:</h6>
+        <div class="row border">
+            <div class="col dropdown m-1">
+                <button class="btn btn-secondary w-8 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Type
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <input class="dropdown-item" type="checkbox" name="dateFilter" id="">
+                    <label for="datefilter">Contract</label>
+                    <input class="dropdown-item" type="checkbox" name="typeFilter" id="">
+                    <label for="typefilter">Full time</label>
+                    <input class="dropdown-item" type="checkbox" name="locationFilter" id="">
+                    <label for="typefilter">Part time</label>
+                    </div>
+                </div>
+             
+                
+              <div class="col dropdown m-1">
+                <button class="btn btn-secondary w-8 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Date Posted
+                </button>
+                <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <input class="dropdown-item" type="checkbox" name="oldest" id="">
+                    <label for="oldest">Oldest</label>
+                    <input class="dropdown-item" type="checkbox" name="newest" id="">
+                    <label for="newest">Newest</label>
+                 
+                </div>
+              </div>
+              <div class="col dropdown m-1">
+                <button class="btn btn-secondary w-8 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Location
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <input class="dropdown-item" type="checkbox" name="capetown" id="">
+                    <label for="capetown">Cape Town</label>
+                    <input class="dropdown-item" type="checkbox" name="jhb" id="">
+                    <label for="jhb">JHB</label>
+                    <input class="dropdown-item" type="checkbox" name="blm" id="">
+                    <label for="blm">Bloemfontein</label>
+                    </div>
+                </div>
+
+                <div class="bg-dark text-center">
+                    <button type="button" class="m-2 btn btn-outline-success btn-sm" style= " background-color:orange; border:1px outset orange">Apply filter</button>
+                </div>
+        </div>
+        <div class="input-group m-4 " id="jobSearch">
+            <input type="search" class="form-control rounded" placeholder="Search job by tittle, skill or category" aria-label="Search"
+              aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-dark m-2" style="background-color: orange;">search</button>
+          </div>
+    
+    
+</div>
+{% for job in jobs %}
+<article class="md container media content-section p-2 m-1 bg-dark">
+    <div class="container media-body bg-light " style="border-bottom-style: dotted;">
+        <div class="container article-metadata p-1 text-inline" style="background-color: orange; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
+            <p class="mr-2" href="" style="float: left;"><span><h6>Tittle: </h6></span>{{job.Tittle}}</p>
+            <small class="mr-2" style="float: right; color: black;">
+                Due date: <span>{{job.date_posted}}</span>
+            </small>
+        </div>
+        <br>
+         <div>
+                
+        <p style="font-family:'Courier New', Courier, monospace;" class=" article-content p-3 m-1 text-warning">
+            {{job.Description}}
+        </p>
+         </div>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}
