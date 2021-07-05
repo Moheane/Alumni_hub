@@ -15,7 +15,7 @@
 <body style="background-color: rgb(230, 226, 223);">
    <header>
     <div class="site-header container-fluid">
-      <nav  class="navbar navbar-expand-sm  color-dark fixed-top" style="background-color:orange; border-bottom: 2px inset black;">
+      <nav  class="navbar navbar-expand-sm  color-dark fixed-top" style="background-color:orange; border-bottom: 2px inset black; font-size: x-small;">
         {% if user.is_authenticated %}
         <div style="padding: 1rem; width:9%;">
           <a href="https://mindworx.co.za/" target="_blank">
@@ -98,33 +98,25 @@
     </nav>
     </div>
    </header>
-   <div class="container">
+   <div class="container-fluid">
      <div style="min-height:5rem;">
 
      </div>
-     <div class="text-center bg-dark container text-warning m-1 pb-3" style="border: 1px solid orange;">
-      {% if user.is_authenticated %} 
-      <p">
-        Hello <span>{{user.username}}!</span>  <br> Welcome to Mindworx Alumni!
-       </p>
-        
-        {% else %}
-        <p>
-          WELCOME TO MINDWORX ALUMNI!
-        </p>
-      {% endif %}
-     </div>
-     <br>
-     <div class="row bg-white my-9">
+ 
+
+     <div class="row bg-dark my-9">
        <div class="col-md-8 p-2">
-        <main class="container p-3 m4" style="background-color: orange; border:0.5rem groove rgb(68, 67, 67)">
+        <main class="container p-1 m1 bg-light" >
          
           {% block content %}
             {% endblock %}
         </main>
        </div>
-       <div class="col-md-4 p-5 bg-dark text-dark p-2" style="border: 1rem inset orange;">
+       <div class="col-md-4 p-3 bg-dark text-dark p-2">
         
+        {% block side %}
+        
+          {% endblock %}
        </div>
      </div>
    </div>

@@ -1,12 +1,12 @@
 {% extends "blog/base.html" %}
 
-{% block content %}
-<div class="container-fluid md bg-dark mb-2 p-2" style="color: aliceblue;">
+{% block side %}
+<div class="container md bg-dark mb-3 p-2" style="color: aliceblue;">
     
-    <div class="container bg-success p-2 m-2" style="font-size: x-small;">
+    <div class="container bg-success p-5">
         <h6>FILTER JOB  BY:</h6>
-        <div class="container row">
-            <div class="col dropdown">
+        <div class="row border">
+            <div class="col dropdown m-1">
                 <button class="btn btn-secondary w-8 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Type
                 </button>
@@ -21,7 +21,7 @@
                 </div>
              
                 
-              <div class="col dropdown">
+              <div class="col dropdown m-1">
                 <button class="btn btn-secondary w-8 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Date Posted
                 </button>
@@ -33,7 +33,7 @@
                  
                 </div>
               </div>
-              <div class="col dropdown">
+              <div class="col dropdown m-1">
                 <button class="btn btn-secondary w-8 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Location
                 </button>
@@ -47,11 +47,11 @@
                     </div>
                 </div>
 
-                <div class="m-1 text-center">
-                    <button type="button" class="m-1 btn btn-outline-success btn-sm" style= " background-color:orange; border:1px outset orange">Apply filter</button>
+                <div class="bg-dark text-center">
+                    <button type="button" class="m-2 btn btn-outline-success btn-sm" style= " background-color:orange; border:1px outset orange">Apply filter</button>
                 </div>
         </div>
-        <div class="input-group m-2 " id="jobSearch">
+        <div class="input-group m-4 " id="jobSearch">
             <input type="search" class="form-control rounded" placeholder="Search job by tittle, skill or category" aria-label="Search"
               aria-describedby="search-addon" />
             <button type="button" class="btn btn-outline-dark m-2" style="background-color: orange;">search</button>
@@ -59,7 +59,7 @@
     
     
 </div>
-{% for job in jobs %}
+{% for job in jobside %}
 <article class="md container media content-section p-2 m-1 bg-dark">
     <div class="container media-body bg-light " style="border-bottom-style: dotted;">
         <div class="container article-metadata p-1 text-inline" style="background-color: orange; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
@@ -78,4 +78,4 @@
     </div>
 </article>
 {% endfor %}
-{% endblock content %}
+{% endblock side %}

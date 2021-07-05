@@ -6,14 +6,14 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def jobSideView(request):
     context = {
-        'jobs': jobModel.objects.all()
+        'jobside': jobModel.objects.all()
     }
     return render(request, 'blog/home.html', context)
 
 
 @login_required
 def jobView(request):
-    context = {
+    context2 = {
         'jobs': jobModel.objects.all()
     }
-    return render(request, 'Job/jobs.html', context)
+    return render(request, 'Job/jobs.html', context2)

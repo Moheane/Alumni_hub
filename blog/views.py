@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import post
+from Job.models import jobModel
 from django.contrib.auth.decorators import login_required
 
 
@@ -7,7 +8,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def HomePage(request):
     context = {
-        'posts': post.objects.all()
+        'posts': post.objects.all(),
+        'jobside': jobModel.objects.all()
     }
     return render(request, 'blog/home.html', context)
 
